@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOC 02 - Border</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+  <style type="text/css">
+    #moc02 {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="moc02">
+  </div>
+
+  <script type="text/javascript">
+    var size = 0;
+    var step = 5;
+    var offset = 0;
+    var max = ((window.innerHeight > window.innerWidth) ? window.innerHeight : window.innerWidth) / 2;
+    var delay = 200;
+    var i = 1;
+
+    var element = document.getElementById("moc02");
+    element.style.height = size + "px";
+    element.style.width = size + "px";
+    element.style.marginTop = (window.innerHeight / 2) + "px";
+
+    element.style["boxShadow"] = "0 0 0 " + step + "px " + Raphael.getColor();
+    while(offset < max) {
+      offset += step * (++i);
+      setTimeout(function(o) {
+        element.style["boxShadow"] += ", 0 0 0 " + o + "px " + Raphael.getColor();
+        console.log(o);
+      }, delay * i, offset);
+    }
+  </script>
+</body>
+</html>

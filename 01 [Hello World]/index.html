@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOC 01 - Hello World</title>
+    <style type="text/css">
+        body {
+            color: #000;
+            text-align: center;
+            font-size: 40px;
+            font-family: Consolas, Courier, monospace;
+        }
+        span {
+            padding: 0 2px 3px 2px;
+            margin: 2px;
+            background-color: #EC7063;
+            color: white;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="moc01"></div>
+    <script type="text/javascript">
+        var code = {
+            "a": "._",    "b": "_...",  "c": "_._.",  "d": "_..",
+            "e": ".",     "f": ".._.",  "g": "__.",   "h": "....",
+            "i": "..",    "j": ".___",  "k": "_._",   "l": "._..",
+            "m": "__",    "n": "_.",    "o": "___",   "p": ".__.",
+            "q": "__._",  "r": "._.",   "s": "...",   "t": "_",
+            "u": ".._",   "v": "..._",  "w": ".__",   "x": "_.._",
+            "y": "_.__",  "z": "__..",  " ": " "
+        };
+        var source = "hello world";
+        var ssnd = new Audio("short.wav");
+        var lsnd = new Audio("long.wav");
+
+        function transcode(source) {
+            var output = document.createElement("div");
+            var chars = source.split("");
+            var delay = 0;
+
+            for (var i = 0; i < chars.length; i++) {
+                var span = document.createElement("span");
+                var snds = code[chars[i]].split("");
+
+                for (var j = 0; j < snds.length; j++) {
+                    delay += 500;
+                    setTimeout(function(snd, span, append){
+                        if(append){
+                            output.appendChild(span);
+                        }
+                        (snd === '.') ? ssnd.play() : lsnd.play();
+                        span.appendChild(document.createTextNode(snd));
+                    }, delay, snds[j], span, (j === 0));
+                };
+                delay += 500;
+            };
+            return output;
+        }
+
+        setTimeout(function(){
+            document.getElementById('moc01').appendChild(transcode('hello world'))
+        }, 1000);
+    </script>
+</body>
+</html>

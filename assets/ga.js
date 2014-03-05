@@ -3,5 +3,5 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-48692103-1', 'mbilbille.github.io');
+ga('create', 'UA-30115117-4', 'mbilbille.github.io');
 ga('send', 'pageview');

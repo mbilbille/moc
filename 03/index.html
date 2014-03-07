@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOC 03 - Binary</title>
+  <!--<script src="../assets/ga.js"></script>-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1>0 ... 1023</h1>
+  <div id="moc03">
+    <input type="number" min="0" max="1023" id="hexa" value="0"><br />
+    <span class="icon-stack">
+      <i class=" icon-circle icon-stack-base"></i>
+      <i class=" icon-arrow-down icon-light"></i>
+    </span>
+    <div id="bin" class="blue">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    for (var i = 0; i < 10; i++) {
+      document.getElementById("bin").innerHTML += '<a class="btn blue" id="bin' + i + '"><span data-hover="1">0</span></a>';
+    };
+
+    var cb = function(){
+      if(!this.value) {
+        return false;
+      }
+      var bin = parseInt(this.value).toString(2);
+      var btns = document.getElementsByTagName("a");
+
+      console.log(bin);
+
+      for (var i = btns.length - 1; i >= 0; i--) {
+        console.log(bin);
+        if(bin % 10 === 1){
+          addClass(btns[i], "active");
+        }
+        else {
+          removeClass(btns[i], "active");
+        }
+        bin = parseInt(bin / 10);
+      };
+    };
+
+    document.getElementById("hexa").addEventListener("change", cb);
+    document.getElementById("hexa").addEventListener("keyup", cb);
+
+    // Adapted from http://stackoverflow.com/a/18881218/3172813
+    function addClass(element, className){
+      if (!element || !className){
+          return;
+      }
+
+      var classString = element.className, nameIndex = classString.indexOf(className);
+      if (nameIndex != -1) {
+        return false;
+      }
+
+      element.className += ' ' + className;
+    }
+
+    function removeClass(element, className){
+      if (!element || !className){
+          return;
+      }
+
+      var classString = element.className, nameIndex = classString.indexOf(className);
+      if (nameIndex == -1) {
+          return false;
+      }
+
+      element.className = classString.substr(0, nameIndex) + classString.substr(nameIndex+className.length);
+    }
+  </script>
+</body>
+</html>

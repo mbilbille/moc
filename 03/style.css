@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700);
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+h1 {
+    font-style: italic;
+    color: #435a6b;
+    text-transform: uppercase;
+}
+
+input {
+    width: 300px;
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.icon-stack {
+    font-size: 60px;
+    color: #eaeaea;
+}
+
+#moc03  {
+    margin: 0 auto;
+}
+
+#bin {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
+.btn {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.35em;
+    text-align: center;
+    line-height: 44px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.btn.active {
+    outline: none;
+}
+
+.btn span {
+    position: relative;
+    display: inline-block;
+    padding: 0 14px;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transform-origin: 50% 0;
+    -moz-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    width: 30px;
+}
+
+.btn span::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: attr(data-hover);
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    transition: background 0.3s;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    -webkit-transform-origin: 50% 0;
+    -moz-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+}
+
+.btn.active span {
+    -webkit-transform: rotateX(90deg) translateY(-22px);
+    -moz-transform: rotateX(90deg) translateY(-22px);
+    transform: rotateX(90deg) translateY(-22px);
+}
+
+.blue {
+   background: #0e83cd;
+}
+.btn.blue span,
+.btn.blue.active span:before {
+    background: #2195de;
+}
+
+.btn.blue span::before {
+    background: #0965a0;
+}

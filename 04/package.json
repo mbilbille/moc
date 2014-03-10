@@ -1,0 +1,15 @@
+{
+  "name": "04",
+  "version": "1.0.0",
+  "description": "MOC 04 - Error",
+  "main": "run.js",
+  "dependencies": {
+    "moment": "~2.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mbilbille/moc.git"
+  },
+  "author": "Matthieu Bilbille",
+  "license": "MIT"
+}

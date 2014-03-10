@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOC 05 - Bounce</title>
+    <script src="assets/ga.js"></script>
+    <style type="text/css">
+        #moc05 {
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="moc05-wrapper">
+        <canvas id="moc05"></canvas>
+    </div>
+    <script type="text/javascript">
+        var canvas = document.getElementById('moc05');
+        var ctx = canvas.getContext('2d');;
+        var width = 500;
+        var height = 250;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.translate(0, canvas.height);
+        ctx.scale(1, -1);
+
+        var radius = 15;
+        var x = 0;
+        var y0 = height / 2;
+        var y = y0;
+        var t = -1;
+        var v = 4;
+        var color = "#EC7063";
+
+        var requestAnimationFrame = window.requestAnimationFrame ||
+                            window.mozRequestAnimationFrame ||
+                            window.webkitRequestAnimationFrame ||
+                            window.msRequestAnimationFrame;
+
+        function draw() {
+            if(y0 < radius) {
+                return; // Finish!
+            }
+            ctx.clearRect(0, 0, width, height);
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = color
+            ctx.fill();
+
+            if(y < radius) {
+                t *= -1;
+                y0  = y0 - y0*0.2;
+            }
+            else if(y > y0) {
+                t *= -1;
+                y = y0;
+                v -= 0.2;
+                i = 0;
+            }
+            x += v / 2;
+            y += v * t;
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOC 12 - Pixel</title>
+    <script src="../assets/ga.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <canvas id="moc12"></canvas>
+    <div id="measureBox">
+        <ul>
+            <li id="value-width"><b>Width:</b><span></span></li>
+            <li id="value-height"><b>Height:</b><span></span></li>
+            <li id="value-perimeter"><b>Perimeter:</b><span></span></li>
+            <li id="value-area"><b>Area:</b><span></span></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var canvas = document.getElementById('moc12');
+        var measureBox = document.getElementById('measureBox');
+        var ctx = canvas.getContext('2d');
+        var drag = false;
+        var startX = 0;
+        var startY = 0;
+        var endX = 0;
+        var endY = 0;
+        
+        var height = 0;
+        var width = 0;
+        var perimeter = 0;
+        var area = 0;
+        
+        // Init canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Start drawing
+        canvas.addEventListener("mousedown", function(event) {
+            measureBox.style.opacity = '0.25';
+            startX = endX = event.x;
+            startY = endY = event.y;
+            drag = true;
+        });
+                
+        // End drawing
+        canvas.addEventListener("mouseup", function(event) {
+            endX = event.x;
+            endY = event.y;
+            drag = false;
+            redraw();
+            measure();
+            measureBox.style.opacity = '';
+        });
+        
+        // Drag drawing
+        canvas.addEventListener("mousemove", function(event) {
+            if(!drag) {
+                return false;
+            }
+            endX = event.x;
+            endY = event.y;
+            redraw();
+        });
+        
+        var redraw = function() {
+            console.log(startX, startY, endX, endY);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.globalAlpha = 0.5
+            ctx.rect(startX, startY, endX - startX, endY - startY);
+            ctx.fillStyle = "#E74C3C";
+            ctx.fill();
+            measure();
+        };
+        
+        var measure = function(){
+            width = endX - startX;
+            height = endY - startY;
+            perimeter = 2 * width + 2 * height;
+            area = width * height;
+            
+            document.getElementById('value-width').getElementsByTagName('span')[0].innerHTML = width + " pixels (px)";
+            document.getElementById('value-height').getElementsByTagName('span')[0].innerHTML = height + " pixels (px)";
+            document.getElementById('value-perimeter').getElementsByTagName('span')[0].innerHTML = perimeter + " pixels (px)";
+            document.getElementById('value-area').getElementsByTagName('span')[0].innerHTML = area + " square pixels (px²)";
+            
+        };
+        
+        measure();
+    </script>
+</body>
+</html>

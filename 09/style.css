@@ -1,0 +1,16 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700);
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    background-color: #fefefe;
+}
+
+p {
+    margin: 50px 0;
+}
+
+#moc09 {
+    background: url("pw_maze_white.png") #f2f2f2;
+    border: 1px solid #ddd;
+}

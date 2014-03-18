@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOC 10 - Switch</title>
+    <!--<script src="../assets/ga.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="moc10">
+        <div class="switch-top"><div class="switch"><input type="checkbox"><label></label></div></div>
+        <div class="switch-left"><div class="switch"><input type="checkbox"><label></label></div></div>
+        <div class="switch-right"><div class="switch"><input type="checkbox"><label></label></div></div>
+        <div class="switch-bottom"><div class="switch"><input type="checkbox"><label></label></div></div>
+        <div id="room">
+            <div id="layer">
+                <div id="top"></div>
+                <div id="left"></div>
+                <div id="right"></div>
+                <div id="bottom"></div>
+            </div>
+        </div>
+    </div>
+    <p>Realistic-looking switch buttons coming from <a href="http://tympanus.net/codrops/2012/09/13/button-switches-with-checkboxes-and-css3-fanciness/" target="_blank">Tympanus.net</a><br />
+    Background image is selected from the <a href="http://subtlepatterns.com/" target="_blank">Subtle Pattern</a></p>
+    <script type="text/javascript">
+        var layer = document.getElementById('layer');
+        var switchs = document.getElementsByTagName('input');
+        var opacity = 0.75;
+
+        layer.style.opacity = opacity;
+
+        var toggle = function (id) {
+            console.log(id);
+            var element = document.getElementById(id);
+            if(element.className){
+                element.className = '';
+                opacity += 0.1875;
+            }
+            else {
+                element.className = id;
+                opacity -= 0.1875;
+            }
+            console.log(opacity);
+            layer.style.opacity = opacity;
+        }
+
+        for (var i = 0; i < switchs.length; i++) {
+            switchs[i].addEventListener("click", function (event) {
+                event.prevenDefault;
+                toggle(this.parentElement.parentElement.className.replace('switch-', '', 'g'));
+            });
+        };
+    </script>
+</body>
+</html>

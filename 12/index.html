@@ -24,16 +24,16 @@
         var startY = 0;
         var endX = 0;
         var endY = 0;
-        
+
         var height = 0;
         var width = 0;
         var perimeter = 0;
         var area = 0;
-        
+
         // Init canvas size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
+
         // Start drawing
         canvas.addEventListener("mousedown", function(event) {
             measureBox.style.opacity = '0.25';
@@ -41,7 +41,7 @@
             startY = endY = event.y;
             drag = true;
         });
-                
+
         // End drawing
         canvas.addEventListener("mouseup", function(event) {
             endX = event.x;
@@ -51,7 +51,7 @@
             measure();
             measureBox.style.opacity = '';
         });
-        
+
         // Drag drawing
         canvas.addEventListener("mousemove", function(event) {
             if(!drag) {
@@ -61,9 +61,8 @@
             endY = event.y;
             redraw();
         });
-        
+
         var redraw = function() {
-            console.log(startX, startY, endX, endY);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath();
             ctx.globalAlpha = 0.5
@@ -72,20 +71,20 @@
             ctx.fill();
             measure();
         };
-        
+
         var measure = function(){
-            width = endX - startX;
-            height = endY - startY;
+            width = Math.abs(endX - startX);
+            height = Math.abs(endY - startY);
             perimeter = 2 * width + 2 * height;
             area = width * height;
-            
+
             document.getElementById('value-width').getElementsByTagName('span')[0].innerHTML = width + " pixels (px)";
             document.getElementById('value-height').getElementsByTagName('span')[0].innerHTML = height + " pixels (px)";
             document.getElementById('value-perimeter').getElementsByTagName('span')[0].innerHTML = perimeter + " pixels (px)";
             document.getElementById('value-area').getElementsByTagName('span')[0].innerHTML = area + " square pixels (px²)";
-            
+
         };
-        
+
         measure();
     </script>
 </body>

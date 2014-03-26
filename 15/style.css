@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700);
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  color: yellow;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 200px;
+  margin: auto;
+  margin-top: -100px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+div {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+}

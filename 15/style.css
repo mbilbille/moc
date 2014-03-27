@@ -16,6 +16,11 @@ h1 {
   top: 50%;
   width: 100%;
   text-align: center;
+  text-shadow: 1px 1px yellow, 2px 2px yellow, 3px 3px yellow, 4px 4px yellow, 5px 5px yellow, 6px 6px yellow;
+  -webkit-transition: all 0.12s ease-out;
+  -moz-transition: all 0.12s ease-out;
+  -ms-transition: all 0.12s ease-out;
+  -o-transition: all 0.12s ease-out;
 }
 
 div {
